@@ -88,10 +88,11 @@ class Main : JavaPlugin(), Listener, CommandExecutor {
 
     @EventHandler
     fun loginEvent(event: PlayerJoinEvent) {
-        val jedis = kedis.resource()
+        val jedis = kedis.resource() // TODO: Fix deadlock
         val sessionID = UUID.randomUUID().toString()
         jedis.setex("session:uuid:$sessionID", caConfig.authTimeoutSeconds, event.player.uniqueId.toString())
-        playerSessions.put(event.player, sessionID)
+
+        playerSessions[event.player] = sessionID
         playersPendingAuth.add(event.player)
         sendLoginMessage(event.player, sessionID)
     }
