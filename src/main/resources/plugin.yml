@@ -1,0 +1,20 @@
+name: CoinAuth
+version: 1.0.0
+description: This plugin pays you money!
+author: Saren
+
+main: net.wtako.coinauth.Main
+
+commands:
+ testcmd:
+   description: Gives you a cake
+   permission: coinauth.test
+   usage: Syntax error! Simply type /&lt;command&gt; to ignite yourself.
+
+permissions:
+ coinauth.test:
+  description: Anything can happen
+  default: true
+ coinauth.nocoin:
+  description: Allows you not to constantly provide Proof of Work captcha
+  default: op
